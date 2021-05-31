@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("//rules:local-deploy.bzl", "local_deploy")    # <1>
+go_library(
+    name = "golang_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/grahambrooks/building-with-bazel/book/examples/golang",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "golang",
+    embed = [":golang_lib"],
+    visibility = ["//visibility:public"],
+)
+
+local_deploy(
+    name = "install", # <2>
+    srcs = [":golang"], # <3>
+)
