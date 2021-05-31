@@ -5,7 +5,7 @@ This is useful for local development but is not intended for production deployme
 """
 # tag::_local_deploy_impl[]
 def _local_deploy_impl(ctx):
-    target = ctx.attr.target # <  1>
+    target = ctx.attr.target # <1>
     shell_commands = ""
 
     for s in ctx.files.srcs:
